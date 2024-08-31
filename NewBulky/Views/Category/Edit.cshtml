@@ -1,0 +1,41 @@
+﻿@model Category
+
+<form method="post">
+    <fieldset>
+        <legend>Edit Category</legend>
+        @* <div asp-validation-summary="All"></div> *@
+        @* <div asp-validation-summary="ModelOnly"></div> *@
+        @* <div asp-validation-summary="None"></div> *@
+        
+        <input asp-for="Id" hidden />
+
+        <div class="row">
+            <label asp-for="Name" class="form-label mt-4"></label>
+            <input class="form-control" id="Name" asp-for="Name" aria-describedby="NameHelp" placeholder="Enter Category Name">
+            <span asp-validation-for="Name" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="DisplayOrder" class="form-label mt-4"></label>
+            <input class="form-control" id="DisplayOrder" asp-for="DisplayOrder" aria-describedby="DisplayOrderHelp" placeholder="Enter Display Order">
+            <span asp-validation-for="DisplayOrder" class="form-text text-danger"></span>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Edit Category</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-secondary border form-control">Back to List</a>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+
+
+@* for client side validation *@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
