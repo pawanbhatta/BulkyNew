@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using NewBulky.Models;
+using Bulky.Models;
 using System.Diagnostics;
 
 namespace NewBulky.Controllers
