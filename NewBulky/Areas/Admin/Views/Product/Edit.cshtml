@@ -1,0 +1,76 @@
+﻿@model Bulky.Models.Product
+
+<form method="post">
+    <fieldset>
+        <legend>Edit Product</legend>
+        @* <div asp-validation-summary="All"></div> *@
+        @* <div asp-validation-summary="ModelOnly"></div> *@
+        @* <div asp-validation-summary="None"></div> *@
+        
+        <input asp-for="Id" hidden />
+
+        <div class="row">
+            <label asp-for="Title" class="form-label mt-4"></label>
+            <input class="form-control" id="Title" asp-for="Title" aria-describedby="NameHelp" placeholder="Enter Product Name">
+            <span asp-validation-for="Title" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="Description" class="form-label mt-4"></label>
+            <input class="form-control" id="Description" asp-for="Description" aria-describedby="DisplayOrderHelp" placeholder="Enter Description">
+            <span asp-validation-for="Description" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="ISBN" class="form-label mt-4"></label>
+            <input class="form-control" id="ISBN" asp-for="ISBN" aria-describedby="DisplayOrderHelp" placeholder="Enter ISBN">
+            <span asp-validation-for="ISBN" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="Author" class="form-label mt-4"></label>
+            <input class="form-control" id="Author" asp-for="Author" aria-describedby="DisplayOrderHelp" placeholder="Enter Author Name">
+            <span asp-validation-for="Author" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="Price" class="form-label mt-4"></label>
+            <input class="form-control" id="Price" asp-for="Price" aria-describedby="DisplayOrderHelp" placeholder="Enter Price">
+            <span asp-validation-for="Price" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="ListPrice" class="form-label mt-4"></label>
+            <input class="form-control" id="ListPrice" asp-for="ListPrice" aria-describedby="DisplayOrderHelp" placeholder="Enter Price for 1-50 Products">
+            <span asp-validation-for="ListPrice" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="Price50" class="form-label mt-4"></label>
+            <input class="form-control" id="Price50" asp-for="Price50" aria-describedby="DisplayOrderHelp" placeholder="Enter Price for 50+ Products">
+            <span asp-validation-for="Price50" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="Price100" class="form-label mt-4"></label>
+            <input class="form-control" id="Price100" asp-for="Price100" aria-describedby="DisplayOrderHelp" placeholder="Enter Price for 100+ Products">
+            <span asp-validation-for="Price100" class="form-text text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="ImageUrl" class="form-label mt-4"></label>
+            <input class="form-control" id="Product.ImageUrl" asp-for="ImageUrl" aria-describedby="DisplayOrderHelp" placeholder="Enter Product Image URL">
+            <span asp-validation-for="ImageUrl" class="form-text text-danger"></span>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Edit Product</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Product" asp-action="Index" class="btn btn-secondary border form-control">Back to List</a>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+
+
+@* for client side validation *@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
