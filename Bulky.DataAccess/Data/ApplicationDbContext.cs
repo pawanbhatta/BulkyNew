@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Bulky.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bulky.DataAccess.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext:IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -12,19 +14,23 @@ namespace Bulky.DataAccess.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
                 new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "Mystery", DisplayOrder = 3 }
                 );
             modelBuilder.Entity<Product>().HasData(
-                new Product 
-                { 
-                    Id = 1, 
-                    Title = "Fortune Of Time", 
+                new Product
+                {
+                    Id = 1,
+                    Title = "Fortune Of Time",
                     Author = "Billy Spark",
                     Description = "Description",
                     ISBN = "SW4547684",
@@ -35,10 +41,10 @@ namespace Bulky.DataAccess.Data
                     CategoryId = 1,
                     ImageUrl = ""
                 },
-                new Product 
-                { 
-                    Id = 2, 
-                    Title = "The Monk Who sold His Ferrari", 
+                new Product
+                {
+                    Id = 2,
+                    Title = "The Monk Who sold His Ferrari",
                     Author = "Robin Sharma",
                     Description = "Description of the Monk",
                     ISBN = "SW4547684",
@@ -50,10 +56,10 @@ namespace Bulky.DataAccess.Data
                     ImageUrl = ""
 
                 },
-                new Product 
-                { 
-                    Id = 3, 
-                    Title = "The second change", 
+                new Product
+                {
+                    Id = 3,
+                    Title = "The second change",
                     Author = "Robin Sharma",
                     Description = "About the second chance in life",
                     ISBN = "SW4547684",

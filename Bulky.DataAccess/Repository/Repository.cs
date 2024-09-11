@@ -27,7 +27,7 @@ namespace Bulky.DataAccess.Repository
 
         public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
-            IQueryable<T> query = _dbSet; 
+            IQueryable<T> query = _dbSet;
            query = query.Where(filter);
             if (!string.IsNullOrEmpty(includeProperties))
             {
@@ -39,8 +39,8 @@ namespace Bulky.DataAccess.Repository
             }
             return query.FirstOrDefault();
         }
-         
-        public IEnumerable<T> GetAll(string? includeProperties=null)  
+
+        public IEnumerable<T> GetAll(string? includeProperties=null)
         {
             IQueryable<T> query = _dbSet;
             if (!string.IsNullOrEmpty(includeProperties))
@@ -49,7 +49,7 @@ namespace Bulky.DataAccess.Repository
                     .Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query =query.Include(property);
-                } 
+                }
             }
             return query.ToList();
         }
